@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "git": "git add . && git commit -m",
+    "postgit": "git push --all",
     "dockercompose": "sudo docker compose up -d",
     "test": "vitest run",
     "test:watch": "vitest ",
@@ -15,6 +17,14 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "4.11.0",
+    "bcryptjs": "2.4.3",
+    "dotenv": "16.0.3",
+    "fastify": "4.14.1",
+    "prisma": "4.11.0",
+    "zod": "3.21.4"
+  },
   "devDependencies": {
     "@rocketseat/eslint-config": "1.2.0",
     "@types/bcryptjs": "2.4.2",
@@ -26,13 +36,5 @@
     "typescript": "5.0.2",
     "vite-tsconfig-paths": "4.0.7",
     "vitest": "0.29.7"
-  },
-  "dependencies": {
-    "@prisma/client": "4.11.0",
-    "bcryptjs": "2.4.3",
-    "dotenv": "16.0.3",
-    "fastify": "4.14.1",
-    "prisma": "4.11.0",
-    "zod": "3.21.4"
   }
 }
