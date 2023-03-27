@@ -1,7 +1,5 @@
 import { GymsRepository } from '@/repositories/gyms-repository'
-import { User } from '@prisma/client'
-import { hash } from 'bcryptjs'
-import { UserAlreadyExistsError } from './errors/user-already-exists-error'
+import { Gym } from '@prisma/client'
 
 interface CreateGymUseCaseRequest {
   title: string
@@ -12,7 +10,7 @@ interface CreateGymUseCaseRequest {
 }
 
 interface CreateGymUseCaseResponse {
-  user: User
+  gym: Gym
 }
 
 export class CreateGymUseCase {
@@ -25,24 +23,14 @@ export class CreateGymUseCase {
     latitude,
     longitude,
   }: CreateGymUseCaseRequest): Promise<CreateGymUseCaseResponse> {
-    const password_hash = await hash(password, 3)
-
-    const thereisEmailConflict = await this.usersRepository.findByEmail(email)
-
-    if (thereisEmailConflict) {
-      throw new UserAlreadyExistsError()
-    }
-
-    // SOLI (D)
-
-    // const prismaUsersRepository = new PrismaUsersRepository()
-
-    const user = await this.usersRepository.create({
-      name,
-      email,
-      password_hash,
+    const gym = await this.gymsRepository.create({
+      title,
+      description,
+      phone,
+      latitude,
+      longitude,
     })
 
-    return { user }
+    return { gym }
   }
 }
