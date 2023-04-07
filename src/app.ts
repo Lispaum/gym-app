@@ -36,7 +36,7 @@ app.setErrorHandler((error, _request, reply) => {
   if (env.NODE_ENV !== 'prod') {
     console.log(error)
   } else {
-    // TODO: Use external tool for log
+    // TODO: Use external tool for log like DataDog
   }
 
   return reply.status(500).send({ message: 'Internal Server Error' })
